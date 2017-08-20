@@ -31,12 +31,19 @@
 
 package org.deb;
 
+import java.util.concurrent.TimeUnit;
+
 import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.BenchmarkMode;
+import org.openjdk.jmh.annotations.Mode;
+import org.openjdk.jmh.annotations.OutputTimeUnit;
 
 public class MyBenchmark {
 
 	@Benchmark
-	public void testMethod() {
+	@BenchmarkMode(Mode.All)
+    @OutputTimeUnit(TimeUnit.SECONDS)
+	public void testProducer() {
 		MyKafkaProducer.main(new String[] { "test_topic", "localhost.localdomain:9092", "100" });
 	}
 
